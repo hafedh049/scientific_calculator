@@ -1,4 +1,5 @@
 import flet as fl
+from model import buttons
 
 
 def open_menu(event: fl.TapEvent) -> None:
@@ -22,8 +23,22 @@ def main(page: fl.Page) -> None:
         )
     )
     page.add(
-        fl.TextField(data="0"),
+        fl.TextField(data="0", read_only=True),
     )
+    for button in buttons:
+        page.add(
+            fl.Row(
+                alignment=fl.MainAxisAlignment.SPACE_BETWEEN,
+                controls=[
+                    fl.Text("Scientific Calculator", size=18, color=fl.colors.WHITE),
+                    fl.IconButton(
+                        icon=fl.icons.GRID_GOLDENRATIO, icon_size=15, on_click=open_menu
+                    ),
+                ],
+            ),
+        )
+        fl.IconButton(icon=button, icon_size=30, on_click=None)
+
     page.update()
 
 

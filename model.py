@@ -2,7 +2,7 @@ from typing import Dict, Any
 from flet import colors
 
 
-calculator_model: Dict[str, Dict[str, Any]] = {
+buttons: Dict[str, Dict[str, Any]] = {
     "AC": {
         "background_color": colors.GREY,
         "text_color": colors.WHITE,
