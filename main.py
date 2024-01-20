@@ -1,9 +1,14 @@
 import flet as fl
 from model import buttons
 
+input_row: fl.TextField = fl.TextField(data="0", read_only=True)
+
 
 def open_menu(event: fl.TapEvent) -> None:
-    print(event)
+    if event.control.text == "=":
+        input_row.value = eval(input_row.value)
+    elif event.control.text == "AC":
+        input_row.value = "0"
 
 
 def main(page: fl.Page) -> None:
@@ -23,7 +28,7 @@ def main(page: fl.Page) -> None:
         )
     )
 
-    page.add(fl.TextField(data="0", read_only=True))
+    page.add(input_row)
 
     for tier in buttons:
         page.add(
