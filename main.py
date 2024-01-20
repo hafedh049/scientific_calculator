@@ -22,14 +22,14 @@ def main(page: fl.Page) -> None:
             ],
         )
     )
+
     page.add(
         fl.TextField(data="0", read_only=True),
     )
     for button in buttons:
         page.add(
-            fl.IconButton(icon="x", icon_size=15, on_click=open_menu),
+            fl.TextButton(text=button, on_click=open_menu),
         )
-        fl.IconButton(icon=button, icon_size=30, on_click=None)
 
     page.update()
 
