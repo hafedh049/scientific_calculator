@@ -1,16 +1,16 @@
 from typing import Dict, Any
-from flet import colors
+from flet import colors, icons
 
 
 buttons: Dict[str, Dict[str, Any]] = {
-    "AC": {
+    icons.AC_UNIT: {
         "background_color": colors.GREY,
         "text_color": colors.WHITE,
         "places": 1,
         "row_index": 1,
         "column_index": 1,
     },
-    "+/_": {
+    icons.minus: {
         "background_color": colors.GREY,
         "text_color": colors.WHITE,
         "places": 1,
