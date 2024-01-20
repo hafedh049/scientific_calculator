@@ -11,9 +11,9 @@ def main(page: fl.Page) -> None:
     page.window_center()
     page.window_resizable = False
     page.add(
-        controls=fl.Row(
-            [
-                fl.Text("Scientific Calculator", size=25, color=fl.colors.WHITE),
+        fl.Row(
+            controls=[
+                fl.Text("Scientific Calculator", size=18, color=fl.colors.WHITE),
                 fl.Container(width=page.window_width),
                 fl.IconButton(
                     icon=fl.Icon(fl.icons.GRID_3X3_ROUNDED, size=15), on_click=open_menu
