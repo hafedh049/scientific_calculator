@@ -3,7 +3,7 @@ from model import buttons
 
 
 def open_menu(event: fl.TapEvent) -> None:
-    print(1)
+    print(event)
 
 
 def main(page: fl.Page) -> None:
@@ -23,12 +23,17 @@ def main(page: fl.Page) -> None:
         )
     )
 
-    page.add(
-        fl.TextField(data="0", read_only=True),
-    )
-    for button in buttons:
+    page.add(fl.TextField(data="0", read_only=True))
+
+    for tier in buttons:
         page.add(
-            fl.TextButton(text=button, on_click=open_menu),
+            fl.Row(
+                expand=True,
+                alignment=fl.MainAxisAlignment.CENTER,
+                controls=[
+                    fl.TextButton(text=button, on_click=open_menu) for button in tier
+                ],
+            )
         )
 
     page.update()
