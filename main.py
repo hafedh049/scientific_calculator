@@ -4,11 +4,17 @@ from model import buttons
 input_row: fl.TextField = fl.TextField(data="0", read_only=True)
 
 
-def open_menu(event: fl.TapEvent) -> None:
+def open_menu(event: fl.TapEvent, page: fl.Page) -> None:
     if event.control.text == "=":
         input_row.value = eval(input_row.value)
     elif event.control.text == "AC":
         input_row.value = "0"
+    else:
+        input_row.value += event.control.text
+
+    print(input_row.value)
+
+    page.update()
 
 
 def main(page: fl.Page) -> None:
@@ -36,7 +42,8 @@ def main(page: fl.Page) -> None:
                 expand=True,
                 alignment=fl.MainAxisAlignment.CENTER,
                 controls=[
-                    fl.TextButton(text=button, on_click=open_menu) for button in tier
+                    fl.TextButton(text=button, on_click=lambda e: open_menu(e, page))
+                    for button in tier
                 ],
             )
         )
