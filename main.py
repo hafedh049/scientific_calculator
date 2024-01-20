@@ -3,6 +3,9 @@ import flet as fl
 
 def main(page: fl.Page) -> None:
     page.title = "Scientific Calculator"
+    page.window_width = 400
+    page.window_center()
+    page.window_resizable = False
     page.update()
 
 
