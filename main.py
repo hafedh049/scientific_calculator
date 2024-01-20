@@ -1,16 +1,22 @@
 import flet as fl
 from model import buttons
 
-input_row: fl.TextField = fl.TextField(data="0", read_only=True)
+input_row: fl.TextField = fl.TextField(value="0", read_only=True)
 
 
-def open_menu(event: fl.TapEvent, page: fl.Page) -> None:
+def open_menu(event: fl.TapEvent) -> None:
+    ...
+
+
+def evaluate(event: fl.TapEvent, page: fl.Page) -> None:
     if event.control.text == "=":
-        input_row.value = eval(input_row.value)
+        input_row.value = str(eval(input_row.value))
     elif event.control.text == "AC":
         input_row.value = "0"
     else:
-        input_row.value += event.control.text
+        input_row.value = input_row.value.lstrip("0") + event.control.text.replace(
+            "+/_", "-"
+        ).replace("X", "*").replace("÷", "/")
 
     print(input_row.value)
 
@@ -42,7 +48,7 @@ def main(page: fl.Page) -> None:
                 expand=True,
                 alignment=fl.MainAxisAlignment.CENTER,
                 controls=[
-                    fl.TextButton(text=button, on_click=lambda e: open_menu(e, page))
+                    fl.TextButton(text=button, on_click=lambda e: evaluate(e, page))
                     for button in tier
                 ],
             )
