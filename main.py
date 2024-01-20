@@ -1,7 +1,7 @@
 import flet as fl
 
 
-def open_menu() -> None:
+def open_menu(event: fl.TapEvent) -> None:
     print(1)
 
 
@@ -12,14 +12,17 @@ def main(page: fl.Page) -> None:
     page.window_resizable = False
     page.add(
         fl.Row(
+            alignment=fl.MainAxisAlignment.SPACE_BETWEEN,
             controls=[
                 fl.Text("Scientific Calculator", size=18, color=fl.colors.WHITE),
-                fl.Container(width=page.window_width),
                 fl.IconButton(
-                    icon=fl.Icon(fl.icons.GRID_3X3_ROUNDED, size=15), on_click=open_menu
+                    icon=fl.icons.GRID_GOLDENRATIO, icon_size=15, on_click=open_menu
                 ),
-            ]
+            ],
         )
+    )
+    page.add(
+        fl.TextField(data="0"),
     )
     page.update()
 
